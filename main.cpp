@@ -1,41 +1,28 @@
-
 #include <iostream>
 #include <fstream>
 using namespace std;
 int N = 1000;
 int main() {
-    ifstream in1("Users\kvartez\Desktop\liczby1.txt");
-    ifstream in2("Users\kvartez\Desktop\liczby2.txt");
+    ifstream in1;
+	in1.open("liczby1.txt");
+    ifstream in2;
+	in2.open("liczby2.txt");
     ofstream nig("naenae.txt");
-    int licz[N],lacz[N];
+    int licz,lacz;
     int min =0,max = 0;
     int q = 0;
-    if(in1.good()){
-        while(!in1.eof()){
-        	
-            
-            in1 >>oct >> licz[q];
-            
-            
-            
-            q++;
-        }
-    }    
-    q=0;
-	if(in2.good()) {
-		while(!in2.eof()){
-			in2>>dec>> lacz[q];
-			q++;
-		}
-	}   
-	for(int i = 0 ; i<N+1;i++){
-		if (licz[i]==lacz[i]){
+    for(int i = 0 ; i<N+1;i++){
+    	in1 >> oct >> licz;
+    	in2 >> dec >> lacz;
+    		if (licz==lacz){
                 min++;
             }
-            if(licz[i] >lacz[i]){
+            if(licz >lacz){
                 max++;
             }
 	}
+	in2.close();
+	in1.close();
     nig<<"rowne:";
     nig<<dec<<min;
     nig<<endl<<"wieksze:";
